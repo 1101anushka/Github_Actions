@@ -1,0 +1,20 @@
+# GOAL: When someone changes the python code
+# The linter should check the syntax, format, indentation(linting) is correct or not
+
+name: pylinter
+
+on:
+  push: 
+    paths: "*.py"
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+    # this step will automatically clone the code of the currnt branch into runner 
+      - name: checkout/clone the code
+        uses: actions/checkout@v7
+
+      # It will install the linting tool
+      - name: Install Linter
+        run: pip install ruff
